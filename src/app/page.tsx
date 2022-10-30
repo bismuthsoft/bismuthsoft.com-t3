@@ -1,4 +1,29 @@
+type Project = {
+  name: String,
+  description: String,
+  link: String,
+  code: String,
+};
+
 const Home = () => {
+  const projects: Project[] = [
+    {
+      name: "Fazeoid",
+      description: `
+web based fm synthesizer with visualization tools for easy design of custom sounds
+      `,
+      link: "https://fazeoid.netlify.app/",
+      code: "https://github.com/bismuthsoft/fazeoid/",
+    },
+    {
+      name: "Svelte DJ Knob",
+      description: `
+A knob Svelte component designed for audio software
+      `,
+      link: "https://svelte-dj-knob.netlify.app/",
+      code: "https://github.com/bismuthsoft/svelte-dj-knob/"
+    },
+  ];
   return (
     <>
       <main className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
@@ -7,12 +32,9 @@ const Home = () => {
         </h1>
         <p className="text-2xl text-gray-700">Our Projects:</p>
         <div className="mt-3 grid gap-3 pt-3 text-center md:grid-cols-3 lg:w-2/3">
-          <ProjectCard
-            name="Fazeoid"
-            description="fm synthesizer todo write better description"
-            link="https://fazeoid.netlify.app/"
-            code="https://github.com/bismuthsoft/fazeoid/"
-          />
+          {projects.map(props => (
+            <ProjectCard {...props} />
+          ))}
         </div>
       </main>
     </>
